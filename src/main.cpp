@@ -27,13 +27,14 @@ void openChrome()
   Serial.println("Opening Chrome...");
   
   // Press Windows key
-  Keyboard.press(KEY_LEFT_GUI); // Windows key (left)
-  delay(50);
-  Keyboard.release(KEY_LEFT_GUI); // Release Windows key
+  // Keyboard.press(KEY_LEFT_GUI); // Windows key (left)
+  // delay(50);
+  // Keyboard.release(KEY_LEFT_GUI); // Release Windows key
   // Keyboard.press(KEY_RIGHT_GUI); // Windows key (left)
   // delay(50);
   // Keyboard.release(KEY_RIGHT_GUI); // Release Windows key
-  
+  Keyboard.write(KEY_LEFT_GUI);  // write یعنی press + release با هم
+
   delay(500);
   
   // Type chrome
@@ -42,9 +43,10 @@ void openChrome()
   delay(200);
   
   // Press Enter
-  Keyboard.press(KEY_RETURN);
-  delay(50);
-  Keyboard.release(KEY_RETURN);
+  // Keyboard.press(KEY_RETURN);
+  // delay(50);
+  // Keyboard.release(KEY_RETURN);
+  Keyboard.write(KEY_RETURN);  // write یعنی press + release با همchrome
   
   Serial.println("Done");
 }
