@@ -1,29 +1,46 @@
 #include <Arduino.h>
+// #ifndef ARDUINO_USB_MODE
+// #error This ESP32 SoC has no Native USB interface
+// #elif ARDUINO_USB_MODE == 1
+// #warning This sketch should be used when USB is in OTG mode
+// void setup() {}
+// void loop() {}
+// #else
 
-// put function declarations here:
-void heartBit(uint32_t ms);
+#include "USB.h"
+#include "USBHIDKeyboard.h"
+
+USBHIDKeyboard Keyboard;
+
+uint32_t lastSend = 0;
+const uint32_t interval = 3000; // send every 3 seconds
+
 
 void setup() {
-  // put your setup code here, to run once:
+
   Serial.begin(115200);
-  Serial.setTimeout(0);
-  Serial.println("Starting...");
-  // pinMode(43, OUTPUT);
+
+  // Start USB HID keyboard
+  USB.begin();
+  Keyboard.begin();
+
+  Serial.println("USB Keyboard Started");
 }
+
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  heartBit(1000); // Call heartBit every 1000 milliseconds
+
+  uint32_t now = millis();
+
+  if (now - lastSend >= interval)
+  {
+    lastSend = now;
+
+    Keyboard.write('A');
+
+    Serial.println("Sent: A");
+  }
+
 }
 
-// put function definitions here:
-void heartBit(uint32_t ms){
-  static uint32_t next = 0;
-  static uint32_t curr = 0;
-  curr = millis();
-  if(next < curr){
-    next = curr + ms/2;
-    // digitalWrite(43, !digitalRead(43));
-    Serial.println("Heartbeat");
-  }
-}
+// #endif
