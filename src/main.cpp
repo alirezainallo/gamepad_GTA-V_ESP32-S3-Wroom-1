@@ -5,35 +5,58 @@
 
 USBHIDKeyboard Keyboard;
 
-uint32_t lastSend = 0;
-const uint32_t interval = 3000; // send every 3 seconds
+uint32_t lastAction = 0;
+const uint32_t interval = 5000; // 5 seconds
 
 
-void setup() {
+void setup()
+{
+    Serial.begin(115200);
 
-  Serial.begin(115200);
+    USB.begin();
+    Keyboard.begin();
 
-  // Start USB HID keyboard
-  USB.begin();
-  Keyboard.begin();
-
-  Serial.println("USB Keyboard Started");
+    Serial.println("USB Keyboard Started");
 }
 
 
-void loop() {
 
-  uint32_t now = millis();
 
-  if (now - lastSend >= interval)
-  {
-    lastSend = now;
-
-    Keyboard.write('A');
-
-    Serial.println("Sent: A");
-  }
-
+void openChrome()
+{
+  Serial.println("Opening Chrome...");
+  
+  // Press Windows key
+  Keyboard.press(KEY_LEFT_GUI); // Windows key (left)
+  delay(50);
+  Keyboard.release(KEY_LEFT_GUI); // Release Windows key
+  // Keyboard.press(KEY_RIGHT_GUI); // Windows key (left)
+  // delay(50);
+  // Keyboard.release(KEY_RIGHT_GUI); // Release Windows key
+  
+  delay(500);
+  
+  // Type chrome
+  Keyboard.print("chrome");
+  
+  delay(200);
+  
+  // Press Enter
+  Keyboard.press(KEY_RETURN);
+  delay(50);
+  Keyboard.release(KEY_RETURN);
+  
+  Serial.println("Done");
 }
 
-// #endif
+void loop()
+{
+    uint32_t now = millis();
+
+    if (now - lastAction >= interval)
+    {
+        lastAction = now;
+
+        openChrome();
+    }
+}
