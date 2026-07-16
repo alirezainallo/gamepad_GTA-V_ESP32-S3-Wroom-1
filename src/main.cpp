@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <Bounce2.h>
+
+Bounce button;
 
 #include "USB.h"
 #include "USBHIDKeyboard.h"
@@ -27,23 +30,25 @@ MacroEngine macro(&commandTable);
 
 String script =
 
-"win\n"
-"delay 500\n"
-"type chrome\n"
-"delay 500\n"
+"tab\n"
+"delay 50\n"
+"type painkiller\n"
+"delay 20\n"
 "enter\n";
 
 
+void keyInit(void);
+void keyProcess(void);
 
 
 //===============================
 // Setup
 //===============================
 
-void setup()
-{
+void setup(){
 
     Serial.begin(115200);
+    Serial.setTimeout(0);
 
 
     USB.begin();
@@ -59,9 +64,10 @@ void setup()
 
 
 
-    macro.run(script);
+    // macro.run(script);
 
 
+    keyInit();
 }
 
 
@@ -71,7 +77,24 @@ void setup()
 // Loop
 //===============================
 
-void loop()
-{
+void loop(){
+    keyProcess();
+}
 
+
+void keyInit(void){
+    button.attach(GPIO_NUM_0, INPUT_PULLUP);
+    button.interval(20);
+}
+void keyProcess(void){
+    button.update();
+
+    if (button.fell()){
+        Serial.println("Pressed");
+        macro.run(script);
+    }
+
+    if (button.rose()){
+        Serial.println("Released");
+    }
 }
