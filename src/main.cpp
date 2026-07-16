@@ -48,15 +48,17 @@ void keyProcess(void);
 
 void setup(){
 
+    
     Serial.begin(115200);
     Serial.setTimeout(0);
-
+    
+    Database_init();
+    if(Database_isFirstRun()){
+        Serial.println("First Run DataBase.");
+    }
 
     USB.begin();
-
     Keyboard.begin();
-
-
     Serial.println("USB Keyboard Started");
 
 
@@ -86,16 +88,17 @@ void loop(){
 void keyInit(void){
     button.attach(GPIO_NUM_0, INPUT_PULLUP);
     button.interval(20);
+    Serial.println("[Key] initialized correctly.");
 }
 void keyProcess(void){
     button.update();
 
     if (button.fell()){
-        Serial.println("Pressed");
+        Serial.printf("[Key] Num: %d, Pressed\n", button.getPin());
         macro.run(script);
     }
-
+    
     if (button.rose()){
-        Serial.println("Released");
+        Serial.printf("[Key] Num: %d, Released\n", button.getPin());
     }
 }
