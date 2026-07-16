@@ -14,10 +14,10 @@
 
 #define DB_DEFAULT_STA_SSID             "esp_sta"
 #define DB_DEFAULT_STA_PASS             "12345678" 
-#define DB_DEFAULT_AP_SSID              "esp"
+#define DB_DEFAULT_AP_SSID              "esp_ap"
 #define DB_DEFAULT_AP_PASS              "12345678" 
 
-#define DB_FIRST_RUN_KEY                0x01
+#define DB_FIRST_RUN_KEY                0x02
 
 typedef struct db_time_zone_tag{
   char url[64];

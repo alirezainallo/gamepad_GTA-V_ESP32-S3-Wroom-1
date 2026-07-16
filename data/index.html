@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0">
+
+    <title>GTA V Macro</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="toolbar">
+
+    <div class="title">
+
+        GTA V Macro
+
+    </div>
+
+    <button id="addButton"
+            class="fab">
+
+        +
+
+    </button>
+
+</div>
+
+<div id="keys"
+     class="keys">
+
+</div>
+
+<div id="editor"
+     class="popup hidden">
+
+    <div class="dialog">
+
+        <div class="dialogHeader">
+
+            <button id="closeButton"
+                    class="back">
+
+                ←
+
+            </button>
+
+            <span>Edit Macro</span>
+
+        </div>
+
+        <div class="content">
+
+            <label>
+
+                Key ID
+
+                <input
+                        id="keyId"
+                        type="number">
+
+            </label>
+
+            <label>
+
+                Name
+
+                <input
+                        id="keyName"
+                        type="text">
+
+            </label>
+
+            <label>
+
+                Command
+
+                <textarea
+                        id="keyCommand"></textarea>
+
+            </label>
+
+            <label class="checkbox">
+
+                <input
+                        id="tabBefore"
+                        type="checkbox">
+
+                Tab Before
+
+            </label>
+
+            <label class="checkbox">
+
+                <input
+                        id="enterAfter"
+                        type="checkbox">
+
+                Enter After
+
+            </label>
+
+        </div>
+
+        <div class="footer">
+
+            <button id="deleteButton"
+                    class="danger">
+
+                Delete
+
+            </button>
+
+            <button id="saveButton"
+                    class="primary">
+
+                Save
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

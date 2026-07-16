@@ -1,0 +1,398 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+
+    --bg:#07090f;
+
+    --card:#121722;
+
+    --border:#1f2937;
+
+    --primary:#3b82f6;
+
+    --primaryHover:#2563eb;
+
+    --danger:#ef4444;
+
+    --text:#ffffff;
+
+    --sub:#9ca3af;
+
+    --radius:18px;
+
+}
+
+body{
+
+    font-family:Segoe UI,Arial,sans-serif;
+
+    background:
+            radial-gradient(circle at top,#182236 0,#07090f 70%);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    padding:20px;
+
+}
+
+.toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.title{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.fab{
+
+    width:56px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+    box-shadow:0 0 20px rgba(59,130,246,.4);
+
+}
+
+.fab:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 30px rgba(59,130,246,.8);
+
+}
+
+.fab:active{
+
+    transform:scale(.94);
+
+}
+
+.keys{
+
+    display:grid;
+
+    gap:18px;
+
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+
+}
+
+.key{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    transition:.15s;
+
+}
+
+.key:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+            0 0 25px rgba(59,130,246,.5);
+
+}
+
+.key:active{
+
+    transform:scale(.96);
+
+}
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(8px);
+
+    animation:fade .15s;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.dialog{
+
+    width:min(92%,420px);
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    animation:popup .18s;
+
+}
+
+.dialogHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.back{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#1c2433;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+.content{
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.content label{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    color:var(--sub);
+
+}
+
+input,
+textarea{
+
+    background:#0b1018;
+
+    color:white;
+
+    border:1px solid #273244;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    outline:none;
+
+    font-size:16px;
+
+}
+
+input:focus,
+textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 15px rgba(59,130,246,.4);
+
+}
+
+textarea{
+
+    resize:none;
+
+    min-height:120px;
+
+}
+
+.checkbox{
+
+    flex-direction:row !important;
+
+    align-items:center;
+
+    gap:12px !important;
+
+}
+
+.checkbox input{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+.footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.primary,
+.danger{
+
+    border:none;
+
+    border-radius:12px;
+
+    color:white;
+
+    cursor:pointer;
+
+    padding:12px 22px;
+
+    font-size:16px;
+
+}
+
+.primary{
+
+    background:var(--primary);
+
+}
+
+.primary:hover{
+
+    background:var(--primaryHover);
+
+}
+
+.danger{
+
+    background:var(--danger);
+
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
