@@ -86,11 +86,11 @@ void setup(){
     // Wait for USB host
     delay(3000);
 
-    // Serial.println("----------------------------");
-    // Serial.println("list files:");
-    // listDir(LittleFS, "/", 0);
-    // Serial.println("----------------------------");
-    
+    Serial.println("----------------------------");
+    Serial.println("list files:");
+    listDir(LittleFS, "/", 0);
+    Serial.println("----------------------------");
+
     // macro.run(script);
 
 
