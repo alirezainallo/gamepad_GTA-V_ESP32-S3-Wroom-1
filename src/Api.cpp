@@ -1,5 +1,5 @@
 #include "Api.h"
-
+#include <LittleFS.h>
 #include "MacroStorage.h"
 #include "MacroManager.h"
 
@@ -32,15 +32,91 @@ void Api::sendError(AsyncWebServerRequest *request,
 
 void Api::getKeys(AsyncWebServerRequest *request)
 {
-    JsonDocument doc;
-    JsonArray array = doc.to<JsonArray>();
+    /*
+    ============================================================
+        Read Keys From LittleFS
 
-    MacroStorage::instance().toJson(array);
+        File:
+            /keys.config
+
+
+        File Format:
+
+        [
+            {
+                "id":1,
+                "name":"Health & Armor",
+                "command":"turtle",
+                "tabBefore":false,
+                "enterAfter":true
+            }
+        ]
+
+
+        Response:
+
+        HTTP 200
+
+        Same JSON Array From File
+
+
+    ============================================================
+    */
+
+    if (!LittleFS.exists("/keys.config"))
+    {
+        request->send(
+            404,
+            "application/json",
+            "{\"success\":false,\"message\":\"keys.config not found\"}"
+        );
+
+        return;
+    }
+
+    File file = LittleFS.open("/keys.config", "r");
+
+    if (!file)
+    {
+        request->send(
+            500,
+            "application/json",
+            "{\"success\":false,\"message\":\"Cannot open keys.config\"}"
+        );
+
+        return;
+    }
+
+    JsonDocument doc;
+
+    DeserializationError error =
+        deserializeJson(doc, file);
+
+    file.close();
+
+    if (error)
+    {
+        request->send(
+            500,
+            "application/json",
+            "{\"success\":false,\"message\":\"Invalid JSON format\"}"
+        );
+
+        return;
+    }
 
     String response;
-    serializeJson(doc, response);
 
-    request->send(200, "application/json", response);
+    serializeJson(
+        doc,
+        response
+    );
+
+    request->send(
+        200,
+        "application/json",
+        response
+    );
 }
 
 void Api::executeKey(AsyncWebServerRequest *request,
