@@ -4,6 +4,9 @@
 #include <Arduino.h>
 #include "USBHIDKeyboard.h"
 
+
+#define KEY_GTA_CHEAT   0x60
+
 class KeyboardActions
 {
 private:

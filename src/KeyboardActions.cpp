@@ -40,6 +40,9 @@ void KeyboardActions::pressKey(const String &key)
     if (k == "enter")
         press(KEY_RETURN);
 
+    else if (k == "`")
+        press(KEY_GTA_CHEAT);
+
     else if (k == "tab")
         press(KEY_TAB);
         

@@ -40,7 +40,7 @@ WebServerManager webServer;
 
 String script =
 
-"tab\n"
+"`\n"
 "delay 50\n"
 "type painkiller\n"
 "delay 20\n"
