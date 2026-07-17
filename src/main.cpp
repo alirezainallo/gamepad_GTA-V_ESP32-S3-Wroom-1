@@ -38,13 +38,20 @@ WebServerManager webServer;
 // Macro Script
 //===============================
 
+// "delay 32\n"
 String script =
-
-"`\n"
-"delay 50\n"
+"key `\n"
 "type painkiller\n"
-"delay 20\n"
-"enter\n";
+"delay 23\n"
+"key enter\n";
+// "type `\n"
+// "delay 20\n"
+// "enter\n"
+// "type turtle\n"
+// "type offroad\n"
+// "type rapidgt\n"
+// "type catchme\n"
+// "type catchmebuzzoff\n"
 
 
 void keyInit(void);

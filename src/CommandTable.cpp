@@ -11,6 +11,7 @@ KeyboardActions *CommandTable::instance = nullptr;
 
 void CommandTable::cmdType(String args)
 {
+    Serial.printf("[CommandTable] cmdType:\'%s\'\n", args);
     instance->typeText(args);
 }
 
@@ -18,6 +19,7 @@ void CommandTable::cmdType(String args)
 
 void CommandTable::cmdDelay(String args)
 {
+    Serial.printf("[CommandTable] cmdDelay:\'%s\'\n", args);
     delay(args.toInt());
 }
 
@@ -25,6 +27,7 @@ void CommandTable::cmdDelay(String args)
 
 void CommandTable::cmdKey(String args)
 {
+    Serial.printf("[CommandTable] cmdKey:\'%s\'\n", args);
     instance->pressKey(args);
 }
 
@@ -132,7 +135,7 @@ void CommandTable::execute(String command)
 
     // If command is not found,
     // treat it as a keyboard key
-
+    Serial.printf("cmd: %s, not found\n", cmd.c_str());
     keyboardActions->pressKey(cmd);
 
 }

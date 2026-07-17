@@ -15,7 +15,10 @@ void KeyboardActions::typeText(const String &text)
 
 void KeyboardActions::press(uint8_t key)
 {
-    keyboard->write(key);
+    // keyboard->write(key);
+    keyboard->press(key);
+    delay(35);
+    keyboard->release(key);
 }
 
 
@@ -37,18 +40,32 @@ void KeyboardActions::pressKey(const String &key)
 
 
     // Normal keys
-    if (k == "enter")
+    if (k == "enter"){
         press(KEY_RETURN);
+        // keyboard->pressRaw(13);
+        // delay(20);
+        // keyboard->releaseRaw(13);
+    }
 
-    else if (k == "`")
+    else if (k == "`"){
+
         press(KEY_GTA_CHEAT);
+        // keyboard->pressRaw(192);
+        // delay(20);
+        // keyboard->releaseRaw(192);
+    }
 
     else if (k == "tab")
         press(KEY_TAB);
         
-    else if (k == "win")
+    else if (k == "win"){
+
         // press(HID_KEY_GUI_LEFT);
         press(KEY_LEFT_GUI);
+        // keyboard->pressRaw(0x5B);
+        // delay(20);
+        // keyboard->releaseRaw(0x5B);
+    }
 
     else if (k == "space")
         press(HID_KEY_SPACE);

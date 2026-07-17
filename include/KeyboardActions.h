@@ -6,6 +6,9 @@
 
 
 #define KEY_GTA_CHEAT   0x60
+// #define KEY_GTA_CHEAT   96
+// #define KEY_GTA_CHEAT   189
+// #define KEY_GTA_CHEAT   192
 
 class KeyboardActions
 {
