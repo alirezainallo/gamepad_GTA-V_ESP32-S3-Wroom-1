@@ -38,16 +38,16 @@ WebServerManager webServer;
 // Macro Script
 //===============================
 
-// String script =
-// "key `\n"
-// "type painkiller\n"
-// "delay 23\n"
-// "key enter\n";
 String script =
-"key win\n"
-"type chrome\n"
+"key `\n"
+"type painkiller\n"
 "delay 23\n"
 "key enter\n";
+// String script =
+// "key win\n"
+// "type chrome\n"
+// "delay 23\n"
+// "key enter\n";
 
 
 // "delay 32\n"
