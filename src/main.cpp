@@ -207,49 +207,7 @@ void keyProcess(void){
 
     if (button.fell()){
         Serial.printf("[Key] Num: %d, Pressed\n", button.getPin());
-        // // macro.run(script);
-
-        // Keyboard.press(KEY_LEFT_GUI);
-        // delay(100);
-        // Keyboard.release(KEY_LEFT_GUI);
-        // // Keyboard.press('r');  // Win + R برای باز کردن Run
-        // // Keyboard.releaseAll();
-        // Keyboard.write((const uint8_t *)"chrome",sizeof("chrome"));
-        // Keyboard.press(KEY_RETURN);
-        // Keyboard.release(KEY_RETURN);
-        // delay(500);
-
-
-        // Keyboard.write(0x81);  // کلید GUI چپ
-        // Keyboard.write(KEY_LEFT_GUI);
-        // Keyboard.write(KEY_RIGHT_GUI);
-        // Keyboard.write(HID_KEY_MENU);
-        
-        // Keyboard.pressRaw(HID_KEY_MENU);
-        // delay(50);
-        // Keyboard.releaseRaw(HID_KEY_MENU);
-        
-        // Keyboard.press(HID_KEY_MENU);
-        // delay(50);
-        // Keyboard.release(HID_KEY_MENU);
-
-        // Keyboard.press(KEY_LEFT_GUI);
-        // delay(150);  // زمان بیشتری نگه دار
-        // Keyboard.releaseAll();
-        // delay(50);
-
-        // Keyboard.press(0x81);
-        // delay(150);  // زمان بیشتری نگه دار
-        // Keyboard.releaseAll();
-        // delay(50);
-
-        
-        Keyboard.pressRaw(0xE3); // Left GUI
-        delay(150);
-        Keyboard.releaseAll();
-
-        // delay(100);
-        // Keyboard.releaseAll();
+        macro.run(script);
     }
     
     if (button.rose()){

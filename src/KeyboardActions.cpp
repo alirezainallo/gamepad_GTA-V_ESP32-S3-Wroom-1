@@ -42,30 +42,28 @@ void KeyboardActions::pressKey(const String &key)
     // Normal keys
     if (k == "enter"){
         press(KEY_RETURN);
-        // keyboard->pressRaw(13);
-        // delay(20);
-        // keyboard->releaseRaw(13);
     }
 
     else if (k == "`"){
-
         press(KEY_GTA_CHEAT);
-        // keyboard->pressRaw(192);
-        // delay(20);
-        // keyboard->releaseRaw(192);
     }
 
     else if (k == "tab")
         press(KEY_TAB);
         
     else if (k == "win"){
+        // // press(HID_KEY_GUI_LEFT);
+        // press(KEY_LEFT_GUI);
+        // // press(KEY_RIGHT_GUI);
+        keyboard->pressRaw(HID_KEY_GUI_LEFT); // Left GUI
+        delay(150);
+        keyboard->releaseRaw(HID_KEY_GUI_LEFT);
 
-        // press(HID_KEY_GUI_LEFT);
-        press(KEY_LEFT_GUI);
-        // press(KEY_RIGHT_GUI);
-        // keyboard->pressRaw(0x5B);
-        // delay(35);
-        // keyboard->releaseRaw(0x5B);
+        //// for "win + r"
+        // keyboard->press(KEY_LEFT_GUI);
+        // delay(20);
+        // keyboard->press('r');  // Win + R برای باز کردن Run
+        // keyboard->releaseAll();
     }
 
     else if (k == "space")
