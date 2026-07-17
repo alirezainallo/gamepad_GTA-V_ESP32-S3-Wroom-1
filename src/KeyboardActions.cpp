@@ -62,8 +62,9 @@ void KeyboardActions::pressKey(const String &key)
 
         // press(HID_KEY_GUI_LEFT);
         press(KEY_LEFT_GUI);
+        // press(KEY_RIGHT_GUI);
         // keyboard->pressRaw(0x5B);
-        // delay(20);
+        // delay(35);
         // keyboard->releaseRaw(0x5B);
     }
 
